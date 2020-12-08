@@ -4,8 +4,8 @@ const Layout = props => {
     return(
     <>
         <nav>
-            <div class="nav-wrapper">
-                <ul class="right hide-on-med-and-down">
+            <div className="nav-wrapper">
+                <ul className="right hide-on-med-and-down">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/starships'>Starships</Link></li>
                 </ul>

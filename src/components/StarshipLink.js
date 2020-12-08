@@ -6,13 +6,20 @@ import Loading from './common/Loading'
 
 const StarshipLink = () => {
     const [shipData, setShipData] = useState([])
-
     const [loading, setLoading] = useState(true)
 
     useEffect(()=> {
-        axios.get('https://swapi.dev/api/starships/').then(res=>{
+        const url1 = 'http://swapi.dev/api/starships/?page=1'
+        const url2 = 'http://swapi.dev/api/starships/?page=2'
+        const url3 = 'http://swapi.dev/api/starships/?page=3'
+        const url4 = 'http://swapi.dev/api/starships/?page=4'
+        const shipArray = []
+
+        Promise.all([axios.get(url1),axios.get(url2),axios.get(url3),axios.get(url4)])
+        .then(res=>{
+            res.map(res=>shipArray.push(...res.data.results))
             // console.log(res.data)
-            setShipData(res.data.results)
+            setShipData(shipArray)
         }).then(()=>setLoading(false))
     },[])
 
